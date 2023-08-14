@@ -26,8 +26,9 @@ public class CotizacionController {
 	@CrossOrigin(origins = "http://localhost:3000")
 	public ResponseEntity<Cotizacion> saveCotizacion(@RequestBody Cotizacion cotizacion) {		
 		try {
-			cotizacionService.saveCotizacion(cotizacion);
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			Cotizacion coti = new Cotizacion();
+			coti = cotizacionService.saveCotizacion(cotizacion);
+			return new ResponseEntity<>(coti, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -55,7 +56,7 @@ public class CotizacionController {
 	@CrossOrigin(origins = "http://localhost:3000")
 	public String deleteItem(@PathVariable("id") int id) {
 		cotizacionService.deleteCotizacion(id);
-		return "Eliminado exitosamente";
+		return "deleted";
 	}
 	
 	@GetMapping("/cotizacion/{id}")

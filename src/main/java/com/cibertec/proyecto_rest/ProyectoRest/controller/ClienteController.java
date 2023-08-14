@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ public class ClienteController {
 	private ClienteService clienteService;
 	
 	@PostMapping("/cliente")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public ResponseEntity<Cliente> saveCliente(@RequestBody Cliente cliente) {		
 		
 		try {
@@ -33,11 +35,13 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/cliente")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public List<Cliente> listCliente(){
 		return clienteService.listCliente();
 	}
 	
 	@PutMapping("/cliente/{id}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public ResponseEntity<Cliente> updateCliente(@RequestBody Cliente cliente,
 			@PathVariable("id") int id) {
 		try {
@@ -49,12 +53,14 @@ public class ClienteController {
 	}
 	
 	@DeleteMapping("/cliente/{id}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public String deleteCliente(@PathVariable("id") int id) {
 		clienteService.deleteCliente(id);
-		return "Eliminado exitosamente";
+		return "deleted";
 	}
 	
 	@GetMapping("/cliente/{id}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public ResponseEntity<Cliente> FindClienteById(@PathVariable("id") int id) {
 		if(clienteService.findClientById(id).isPresent()) {
 			return new ResponseEntity<>(clienteService.findClientById(id).get(), HttpStatus.OK);

@@ -1,12 +1,10 @@
 package com.cibertec.proyecto_rest.ProyectoRest.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cibertec.proyecto_rest.ProyectoRest.model.Cotizacion;
 import com.cibertec.proyecto_rest.ProyectoRest.model.CuerpoCotizacion;
 import com.cibertec.proyecto_rest.ProyectoRest.repository.CuerpoCotizacionRepository;
 
@@ -18,8 +16,7 @@ public class CuerpoCotizacionImpl implements CuerpoCotizacionService {
 	
 	@Override
 	public CuerpoCotizacion saveCuerpoCotizacion(CuerpoCotizacion cuerpoCotizacion) {
-		// TODO Auto-generated method stub
-		return null;
+		return cuerpoCotizacionRepository.save(cuerpoCotizacion);
 	}
 
 	@Override
@@ -30,8 +27,7 @@ public class CuerpoCotizacionImpl implements CuerpoCotizacionService {
 
 	@Override
 	public void deleteCuerpoCotizacion(int id) {
-		// TODO Auto-generated method stub
-		
+		cuerpoCotizacionRepository.deleteById(id);
 	}
 
 	@Override

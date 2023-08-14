@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ public class ItemController {
 	private ItemService itemService;
 	
 	@PostMapping("/item")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public ResponseEntity<Item> saveItem(@RequestBody Item item) {
 		try {
 			itemService.saveItem(item);
@@ -31,11 +33,13 @@ public class ItemController {
 	}
 	
 	@GetMapping("/item")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public List<Item> listItem(){
 		return itemService.listItem();
 	}
 	
 	@PutMapping("/item/{id}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public ResponseEntity<Item> updateItem(@RequestBody Item item,
 			@PathVariable("id") int id) {
 		try {
@@ -47,12 +51,14 @@ public class ItemController {
 	}
 	
 	@DeleteMapping("/item/{id}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public String deleteItem(@PathVariable("id") int id) {
 		itemService.deleteItem(id);
-		return "Eliminado exitosamente";
+		return "deleted";
 	}
 	
 	@GetMapping("/item/{id}")
+	@CrossOrigin(origins = "http://localhost:3000")
 	public ResponseEntity<Item> FindItemById(@PathVariable("id") int id) {
 		if(itemService.findItemById(id).isPresent()) {
 			return new ResponseEntity<>(itemService.findItemById(id).get(), HttpStatus.OK);
