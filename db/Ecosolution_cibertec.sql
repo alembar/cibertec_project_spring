@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: Ecosolution_cibertec
 -- ------------------------------------------------------
--- Server version	8.0.33-0ubuntu0.22.04.4
+-- Server version	8.0.34-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `cliente` (
   `ruc` varchar(12) DEFAULT NULL,
   `correo_electronico` varchar(200) DEFAULT NULL COMMENT '	',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'Hacklibre EIRL','20604175446',NULL);
+INSERT INTO `cliente` VALUES (45,'Los Portales','20589765224','agencia@losportales.com');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `cotizacion` (
   PRIMARY KEY (`id`),
   KEY `fk_cotizacion_1_idx` (`id_cliente`),
   CONSTRAINT `fk_cotizacion_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `cotizacion` (
 
 LOCK TABLES `cotizacion` WRITE;
 /*!40000 ALTER TABLE `cotizacion` DISABLE KEYS */;
-INSERT INTO `cotizacion` VALUES (1,'cotizacion 1',1,'4 dias calendario','asunto de la cotizacion',0,1),(2,'cotizacion 1',2,'4 dias calendario','asunto de la cotizacion',0,1);
+INSERT INTO `cotizacion` VALUES (1,'Cotización para impactos ambientales de pavimentación',1,'45 dias','Cotizacion para la creación de un informe',0,45);
 /*!40000 ALTER TABLE `cotizacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +89,7 @@ CREATE TABLE `cuerpo_cotizacion` (
   KEY `fk_cuerpo_cotizacion_2_idx` (`id_item`),
   CONSTRAINT `fk_cuerpo_cotizacion_1` FOREIGN KEY (`id_cotizacion`) REFERENCES `cotizacion` (`id`),
   CONSTRAINT `fk_cuerpo_cotizacion_2` FOREIGN KEY (`id_item`) REFERENCES `item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `cuerpo_cotizacion` (
 
 LOCK TABLES `cuerpo_cotizacion` WRITE;
 /*!40000 ALTER TABLE `cuerpo_cotizacion` DISABLE KEYS */;
-INSERT INTO `cuerpo_cotizacion` VALUES (1,10,1,1),(2,2,1,2);
+INSERT INTO `cuerpo_cotizacion` VALUES (1,4,1,4);
 /*!40000 ALTER TABLE `cuerpo_cotizacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +115,7 @@ CREATE TABLE `item` (
   `description` varchar(1000) DEFAULT NULL,
   `precio_unitario` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'Servicio 001','Servicio para poder realizar la matriz conesa con cada etapa y fase del proceso de construcción',440.2),(2,'Servicio 002','Servicio de impacto ambiental',950.1);
+INSERT INTO `item` VALUES (4,'Elaboración del Estudio de Impacto Ambiental','Elaboración del Estudio de Impacto Ambiental',1000),(5,'Gastos operativos del monitoreo','Gastos operativos del monitoreo',900),(6,NULL,NULL,0);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-12  0:36:09
+-- Dump completed on 2023-08-18 20:17:33

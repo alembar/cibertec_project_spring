@@ -55,8 +55,13 @@ public class ClienteController {
 	@DeleteMapping("/cliente/{id}")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public String deleteCliente(@PathVariable("id") int id) {
-		clienteService.deleteCliente(id);
-		return "deleted";
+		try {
+			clienteService.deleteCliente(id);
+			return "deleted";
+		}
+		catch(Exception e){
+			return "ExceptionErrorDeleted";
+		}
 	}
 	
 	@GetMapping("/cliente/{id}")

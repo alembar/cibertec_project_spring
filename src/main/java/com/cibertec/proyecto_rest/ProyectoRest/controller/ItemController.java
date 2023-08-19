@@ -53,8 +53,14 @@ public class ItemController {
 	@DeleteMapping("/item/{id}")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public String deleteItem(@PathVariable("id") int id) {
-		itemService.deleteItem(id);
-		return "deleted";
+		try {
+			itemService.deleteItem(id);
+			return "deleted";
+		}catch (Exception e) {
+			return "ExceptionErrorDeleted";
+		}
+		
+		
 	}
 	
 	@GetMapping("/item/{id}")

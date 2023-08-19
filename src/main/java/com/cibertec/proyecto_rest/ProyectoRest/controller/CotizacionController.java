@@ -55,8 +55,12 @@ public class CotizacionController {
 	@DeleteMapping("/cotizacion/{id}")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public String deleteItem(@PathVariable("id") int id) {
-		cotizacionService.deleteCotizacion(id);
-		return "deleted";
+		try {
+			cotizacionService.deleteCotizacion(id);
+			return "deleted";
+		}catch (Exception e) {
+			return "ExceptionErrorDeleted";
+		}
 	}
 	
 	@GetMapping("/cotizacion/{id}")

@@ -47,7 +47,11 @@ public class CuerpoCotizacionController {
 	@DeleteMapping("/cuerpocotizacion/{id}")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public String deleteItem(@PathVariable("id") int id) {
+		try {
 		cuerpoCotizacionService.deleteCuerpoCotizacion(id);
 		return "deleted";
+		}catch(Exception e) {
+			return "ExceptionErrorDeleted";
+		}
 	}
 }
